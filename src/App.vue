@@ -52,6 +52,7 @@ export default {
     return {
       pokemonData: {},
       pokemonID: "",
+      pokemons: [],
     };
   },
   methods: {
@@ -60,13 +61,25 @@ export default {
         const pokemonToFind = await fetch(`${pokeapi}${this.pokemonID}`);
         const pokemon = await pokemonToFind.json(); // La respuesta se convierte en un json
         this.pokemonData = pokemon;
-        console.log(pokemon);
+        this.pokemons.push(pokemon);
+
+        /* console.log(this.pokemonData); */
         return pokemon;
       } catch (error) {
         alert("Pokemon was not found");
+        console.log(error);
       }
     },
   },
+  addPokemon(pokemon) {
+    this.pokemons.push({
+      id: this.pokemons.length + 1,
+      data: pokemon,
+    });
+  },
+  /*   removePost(id) {
+    this.tasks = this.tasks.filter((task) => task.id !== id);
+  }, */
 };
 </script>
 
