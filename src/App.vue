@@ -17,24 +17,8 @@
   </header>
   <main class="container">
     <section class="cards-pokemon" v-if="pokemons">
-      <div class="tarjet" v-for="(pokemon, i) in pokemons" :key="i">
-        <img :src="pokemon.sprites.front_default" :alt="pokemon.name" />
-        <h2 class="Title_card">{{ pokemon.name }}</h2>
-        <div class="description-tarjet">
-          <p><b>Tipo </b></p>
-          <p
-            v-for="(type, index) in pokemon.types"
-            :key="index"
-            :class="type.type.name"
-          >
-            {{ type.type.name }}
-          </p>
-
-          <p><b>Estadisticas </b></p>
-          <p v-for="(stat, index) in pokemon.stats" :key="index">
-            {{ stat.stat.name }} → {{ stat.base_stat }}
-          </p>
-        </div>
+      <div v-for="(pokemon, i) in pokemons" :key="i">
+        <PokemonCard :pokemon="pokemon" />
       </div>
     </section>
   </main>
@@ -42,9 +26,10 @@
 
 <script>
 import { pokeapi } from "@/api/pokeapi";
+import PokemonCard from "./components/PokemonCard";
 export default {
   name: "app",
-
+  components: { PokemonCard },
   data() {
     return {
       pokemonID: "",
