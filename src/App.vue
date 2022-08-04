@@ -16,17 +16,14 @@
     </div>
   </header>
   <main class="container">
-    <section
-      class="cards-pokemon"
-      v-if="Object.entries(pokemonData).length > 0"
-    >
-      <div class="tarjet">
-        <img :src="pokemonData.sprites.front_default" alt="pokemonData.name" />
-        <h2 class="Title_card">{{ pokemonData.name }}</h2>
+    <section class="cards-pokemon" v-if="pokemons">
+      <div class="tarjet" v-for="(pokemon, i) in pokemons" :key="i">
+        <img :src="pokemon.sprites.front_default" :alt="pokemon.name" />
+        <h2 class="Title_card">{{ pokemon.name }}</h2>
         <div class="description-tarjet">
           <p><b>Tipo </b></p>
           <p
-            v-for="(type, index) in pokemonData.types"
+            v-for="(type, index) in pokemon.types"
             :key="index"
             :class="type.type.name"
           >
@@ -34,7 +31,7 @@
           </p>
 
           <p><b>Estadisticas </b></p>
-          <p v-for="(stat, index) in pokemonData.stats" :key="index">
+          <p v-for="(stat, index) in pokemon.stats" :key="index">
             {{ stat.stat.name }} → {{ stat.base_stat }}
           </p>
         </div>
@@ -50,7 +47,6 @@ export default {
 
   data() {
     return {
-      pokemonData: {},
       pokemonID: "",
       pokemons: [],
     };
@@ -60,10 +56,9 @@ export default {
       try {
         const pokemonToFind = await fetch(`${pokeapi}${this.pokemonID}`);
         const pokemon = await pokemonToFind.json(); // La respuesta se convierte en un json
-        this.pokemonData = pokemon;
         this.pokemons.push(pokemon);
 
-        /* console.log(this.pokemonData); */
+        /* console.log(this.pokemon); */
         return pokemon;
       } catch (error) {
         alert("Pokemon was not found");
