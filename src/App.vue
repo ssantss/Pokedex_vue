@@ -56,8 +56,8 @@ export default {
       try {
         const pokemonToFind = await fetch(`${pokeapi}${this.pokemonID}`);
         const pokemon = await pokemonToFind.json(); // La respuesta se convierte en un json
-        this.pokemons.push(pokemon);
-
+        /* this.pokemons.push(pokemon); */
+        this.addPokemon(pokemon);
         /* console.log(this.pokemon); */
         return pokemon;
       } catch (error) {
@@ -65,12 +65,10 @@ export default {
         console.log(error);
       }
     },
-  },
-  addPokemon(pokemon) {
-    this.pokemons.push({
-      id: this.pokemons.length + 1,
-      data: pokemon,
-    });
+
+    addPokemon(pokemon) {
+      this.pokemons.push(pokemon);
+    },
   },
   /*   removePost(id) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
