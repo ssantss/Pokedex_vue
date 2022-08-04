@@ -18,7 +18,7 @@
   <main class="container">
     <section class="cards-pokemon" v-if="pokemons">
       <div v-for="(pokemon, i) in pokemons" :key="i">
-        <PokemonCard :pokemon="pokemon" />
+        <PokemonCard :pokemon="pokemon" @removePokemon="removePokemon" />
       </div>
     </section>
   </main>
@@ -53,6 +53,10 @@ export default {
 
     addPokemon(pokemon) {
       this.pokemons.push(pokemon);
+    },
+    removePokemon(id) {
+      const index = this.pokemons.findIndex((pokemon) => pokemon.id === id);
+      this.pokemons.splice(index, 1);
     },
   },
   /*   removePost(id) {

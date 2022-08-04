@@ -16,6 +16,7 @@
         {{ stat.stat.name }} → {{ stat.base_stat }}
       </p>
     </div>
+    <button @click="$emit('removePokemon', pokemon.id)">CERRAR</button>
   </div>
 </template>
 <script>
