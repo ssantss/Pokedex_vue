@@ -52,7 +52,10 @@ export default {
     },
 
     addPokemon(pokemon) {
-      this.pokemons.push(pokemon);
+      const pokemonIndex = this.pokemons.findIndex((p) => p.id === pokemon.id);
+      if (pokemonIndex === -1) {
+        this.pokemons.push(pokemon);
+      }
     },
     removePokemon(id) {
       const index = this.pokemons.findIndex((pokemon) => pokemon.id === id);
