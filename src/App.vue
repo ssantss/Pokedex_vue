@@ -1,27 +1,29 @@
 <template>
-  <header class="header">
-    <div class="logo">
-      <img src="@/assets/pngwing.com.png" alt="Logo_pokemon" />
-    </div>
-    <p>BUSCA TU POKEMON</p>
-    <label>NOMBRE, TIPO o ID:</label>
-    <div class="searchcontainer">
-      <input
-        type="text"
-        placeholder="Pikachu"
-        class="pokemonSearch"
-        v-model="pokemonID"
-      />
-      <button @click="searchPokemon">Search pokemon!</button>
-    </div>
-  </header>
-  <main class="container">
-    <section class="cards-pokemon" v-if="pokemons">
-      <div v-for="(pokemon, i) in pokemons" :key="i">
-        <PokemonCard :pokemon="pokemon" @removePokemon="removePokemon" />
+  <body class="container_main">
+    <header class="header">
+      <div class="logo">
+        <img src="@/assets/pngwing.com.png" alt="Logo_pokemon" />
       </div>
-    </section>
-  </main>
+      <p>BUSCA TU POKEMON</p>
+      <label>NOMBRE, TIPO o ID:</label>
+      <div class="searchcontainer">
+        <input
+          type="text"
+          placeholder="Pikachu"
+          class="pokemonSearch"
+          v-model="pokemonID"
+        />
+        <button @click="searchPokemon">Search pokemon!</button>
+      </div>
+    </header>
+    <div class="containercards">
+      <section class="containercards" v-if="pokemons">
+        <div v-for="(pokemon, i) in pokemons" :key="i" class="cards-pokemon">
+          <PokemonCard :pokemon="pokemon" @removePokemon="removePokemon" />
+        </div>
+      </section>
+    </div>
+  </body>
 </template>
 
 <script>
@@ -83,12 +85,16 @@ html {
   font-family: "poke";
   src: url("./fonts/PokemonGb-RAeo.ttf");
 }
+container_main {
+  width: 100%;
+  height: 100%;
+}
 
 .header {
   display: flex;
   flex-direction: column;
   width: auto;
-  height: 300px;
+  height: auto;
   background-color: black;
   justify-content: space-around;
   align-items: center;
@@ -113,6 +119,7 @@ html {
   flex-direction: row;
   margin: 5px;
 }
+
 .pokemonSearch {
   background-color: #ffcb32;
   width: 200px;
@@ -159,14 +166,17 @@ button:hover {
   color: red;
   background-color: #ffffff;
 }
-
-.cards-pokemon {
+.containercards {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: "Nunito", sans-serif;
+  width: auto;
+  min-height: 800px;
+  height: auto;
+  margin: 0;
   align-items: flex-start;
-  flex-direction: row;
   background-color: #ffcb32;
-  width: 100%;
-  height: 800px;
 }
 
 .tarjet {
