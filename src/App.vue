@@ -23,7 +23,7 @@
       </div>
       <div class="container_logos">
         <div class="logo_github">
-          <a href="https://github.com/ssantss" target="_blank"
+          <a href="https://github.com/ssantss/Pokedex_vue" target="_blank"
             ><img src="./assets/github-icon.png" alt="github icon"
           /></a>
         </div>
