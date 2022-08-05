@@ -21,6 +21,18 @@
       <div class="conteinerSorprendeme">
         <button class="buttom_sorprendeme" @click="random">Sorprendeme</button>
       </div>
+      <div class="container_logos">
+        <div class="logo_github">
+          <a href="https://github.com/ssantss" target="_blank"
+            ><img src="./assets/github-icon.png" alt="github icon"
+          /></a>
+        </div>
+        <div class="logo_platzi">
+          <a href="https://platzi.com/p/saants/" target="_blank"
+            ><img src="./assets/logotipo-platzi.png" alt="platzi icon"
+          /></a>
+        </div>
+      </div>
     </header>
     <div class="containercards">
       <section class="containercards" v-if="pokemons">
@@ -216,6 +228,22 @@ container_main {
   color: red;
   background-color: #ffffff;
 }
+.container_logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.logo_github img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.logo_platzi img {
+  width: 51.5px;
+  height: 25px;
+  cursor: pointer;
+}
+
 .containercards {
   display: flex;
   flex-wrap: wrap;
@@ -246,6 +274,10 @@ container_main {
   border-top-right-radius: 50px;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
+  transition: all 0.2s ease-in-out;
+}
+.tarjet:hover {
+  transform: scale(1.05);
 }
 .tarjet img {
   width: 100%;
