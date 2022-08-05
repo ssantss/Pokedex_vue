@@ -13,7 +13,9 @@
           class="pokemonSearch"
           v-model="pokemonID"
         />
-        <button @click="searchPokemon">Search pokemon!</button>
+        <button @click="searchPokemon" class="searchpokemon">
+          Search pokemon!
+        </button>
       </div>
     </header>
     <div class="containercards">
@@ -56,7 +58,7 @@ export default {
     addPokemon(pokemon) {
       const pokemonIndex = this.pokemons.findIndex((p) => p.id === pokemon.id);
       if (pokemonIndex === -1) {
-        this.pokemons.push(pokemon);
+        this.pokemons.unshift(pokemon);
       }
     },
     removePokemon(id) {
@@ -145,7 +147,7 @@ container_main {
 .pokemonSearch:focus::placeholder {
   color: transparent;
 }
-button {
+.searchpokemon {
   width: 200px;
   height: 40px;
   background-color: #2d63c8;
@@ -162,17 +164,18 @@ button {
   border-bottom-right-radius: 20px;
   color: white;
 }
-button:hover {
+.searchpokemon:hover {
   color: red;
   background-color: #ffffff;
 }
 .containercards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   font-family: "Nunito", sans-serif;
   width: auto;
-  min-height: 800px;
+  min-height: 700px;
+  overflow: auto;
   height: auto;
   margin: 0;
   align-items: flex-start;
@@ -191,19 +194,20 @@ button:hover {
   background-color: black;
   margin: 15px;
   font-family: "Nunito", sans-serif;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 .tarjet img {
   width: 100%;
   height: 80%;
   object-fit: cover;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
 }
 
 .Title_card {
-  margin-top: 10px;
   font-size: 1.6rem;
   padding: 2px 12px;
   background-color: #1ef30d;
@@ -218,59 +222,124 @@ button:hover {
   color: white;
   margin: 14px;
   font-size: 1.4rem;
+  text-align: center;
 }
+
+.buttom_eliminar {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs, 1));
+  width: 22px;
+  height: 22px;
+  border: 2px solid;
+  border-radius: 22px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.buttom_eliminar::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 5px;
+  top: 8px;
+  left: 4px;
+}
+
 .normal {
   background-color: $normal;
+  border-radius: 20px;
+  margin: 3px;
 }
 .fire {
   background-color: $fire;
+  border-radius: 20px;
+  margin: 3px;
 }
 .water {
   background-color: $water;
+  border-radius: 20px;
+  margin: 3px;
+  margin: 3px;
 }
 .grass {
   background-color: $grass;
+  border-radius: 20px;
+  margin: 3px;
 }
 .electric {
   background-color: $electric;
+  border-radius: 20px;
+  margin: 3px;
 }
 .ice {
   background-color: $ice;
+  border-radius: 20px;
+  margin: 3px;
 }
 .fighting {
   background-color: $fighting;
+  border-radius: 20px;
+  margin: 3px;
 }
 .poison {
   background-color: $poison;
+  border-radius: 20px;
+  margin: 3px;
 }
 .ground {
   background-color: $ground;
+  border-radius: 20px;
+  margin: 3px;
 }
 .flying {
   background-color: $flying;
+  border-radius: 20px;
+  margin: 3px;
 }
 .psychic {
   background-color: $psychic;
+  border-radius: 20px;
+  margin: 3px;
 }
 .bug {
   background-color: $bug;
+  border-radius: 20px;
+  margin: 3px;
 }
 .rock {
   background-color: $rock;
+  border-radius: 20px;
+  margin: 3px;
 }
 .ghost {
   background-color: $ghost;
+  border-radius: 20px;
+  margin: 3px;
 }
 .dark {
   background-color: $dark;
+  border-radius: 20px;
+  margin: 3px;
 }
 .dragon {
   background-color: $dragon;
+  border-radius: 20px;
+  margin: 3px;
 }
 .steel {
   background-color: $steel;
+  border-radius: 20px;
+  margin: 3px;
 }
 .fairy {
   background-color: $fairy;
+  border-radius: 20px;
+  margin: 3px;
 }
 </style>

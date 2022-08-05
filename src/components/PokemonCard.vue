@@ -16,7 +16,10 @@
         {{ stat.stat.name }} → {{ stat.base_stat }}
       </p>
     </div>
-    <button @click="$emit('removePokemon', pokemon.id)">CERRAR</button>
+    <button
+      @click="$emit('removePokemon', pokemon.id)"
+      class="buttom_eliminar"
+    ></button>
   </div>
 </template>
 <script>
@@ -30,3 +33,10 @@ export default {
   },
 };
 </script>
+
+<!-- <style>
+.buttom_eliminar {
+  color: red;
+}
+</style>
+ -->
