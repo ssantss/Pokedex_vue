@@ -12,6 +12,7 @@
           placeholder="Escribe aqui!"
           class="pokemonSearch"
           v-model="pokemonID"
+          @keyup.enter="searchPokemon"
         />
         <button @click="searchPokemon" class="searchpokemon">
           Search pokemon!
@@ -83,7 +84,7 @@ export default {
       this.pokemons.splice(index, 1);
     },
     random() {
-      const maxrandom = 20;
+      const maxrandom = 14;
       for (let index = 0; index < maxrandom; index++) {
         const minPokemon = 0;
         const maxPokemon = 905;
