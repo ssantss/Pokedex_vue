@@ -47,9 +47,11 @@
 <script>
 import { pokeapi } from "@/api/pokeapi";
 import PokemonCard from "./components/PokemonCard";
+
 export default {
   name: "app",
   components: { PokemonCard },
+
   data() {
     return {
       pokemonID: "",
@@ -66,7 +68,13 @@ export default {
         /* console.log(this.pokemon); */
         return pokemon;
       } catch (error) {
-        alert("Pokemon was not found");
+        this.$swal({
+          position: "center",
+          icon: "error",
+          showConfirmButton: false,
+          title: "POKEMON NO ENCONTRADO!",
+          timer: 800,
+        });
         console.log(error);
       }
     },
@@ -130,10 +138,10 @@ html {
   font-family: "poke";
   src: url("./fonts/PokemonGb-RAeo.ttf");
 }
-container_main {
+/* container_main {
   width: 100%;
   height: 100%;
-}
+} */
 
 .header {
   display: flex;
