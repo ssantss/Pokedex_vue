@@ -73,7 +73,7 @@ export default {
           icon: "error",
           showConfirmButton: false,
           title: "POKEMON NO ENCONTRADO!",
-          timer: 800,
+          timer: 1000,
         });
         console.log(error);
       }
