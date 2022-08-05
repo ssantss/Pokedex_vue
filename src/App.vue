@@ -9,13 +9,16 @@
       <div class="searchcontainer">
         <input
           type="text"
-          placeholder="Pikachu"
+          placeholder="Escribe aqui!"
           class="pokemonSearch"
           v-model="pokemonID"
         />
         <button @click="searchPokemon" class="searchpokemon">
           Search pokemon!
         </button>
+      </div>
+      <div class="conteinerSorprendeme">
+        <button class="buttom_sorprendeme" @click="random">Sorprendeme</button>
       </div>
     </header>
     <div class="containercards">
@@ -54,6 +57,20 @@ export default {
         console.log(error);
       }
     },
+    async searchPokemonRadom(randomNumber) {
+      try {
+        const pokemonID = randomNumber;
+        const pokemonToFind = await fetch(`${pokeapi}${pokemonID}`);
+        const pokemon = await pokemonToFind.json(); // La respuesta se convierte en un json
+        /* this.pokemons.push(pokemon); */
+        this.addPokemon(pokemon);
+        /* console.log(this.pokemon); */
+        return pokemon;
+      } catch (error) {
+        alert("Pokemon was not found");
+        console.log(error);
+      }
+    },
 
     addPokemon(pokemon) {
       const pokemonIndex = this.pokemons.findIndex((p) => p.id === pokemon.id);
@@ -65,7 +82,20 @@ export default {
       const index = this.pokemons.findIndex((pokemon) => pokemon.id === id);
       this.pokemons.splice(index, 1);
     },
+    random() {
+      const maxrandom = 20;
+      for (let index = 0; index < maxrandom; index++) {
+        const minPokemon = 0;
+        const maxPokemon = 905;
+        const randomNumber = Math.floor(
+          Math.random() * (maxPokemon - minPokemon + 1) + minPokemon
+        );
+        console.log("RANDOM = ", randomNumber);
+        this.searchPokemonRadom(randomNumber);
+      }
+    },
   },
+
   /*   removePost(id) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
   }, */
@@ -146,6 +176,23 @@ container_main {
 }
 .pokemonSearch:focus::placeholder {
   color: transparent;
+}
+.buttom_sorprendeme {
+  width: 200px;
+  height: 40px;
+  background-color: red;
+  border: none;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: "poke";
+  margin: 10px;
+  color: white;
+  border-radius: 20px;
+}
+.buttom_sorprendeme:hover {
+  color: red;
+  background-color: #ffffff;
 }
 .searchpokemon {
   width: 200px;
