@@ -1,4 +1,11 @@
-# vue_pokedex_2
+# POKEDEX 
+
+## Description 
+Pokemon pokedex using vue 3
+
+## Screenshots
+![image](https://user-images.githubusercontent.com/5649606/183216483-c799ab04-43c1-4ff7-8723-ca5df4979778.png)
+
 
 ## Project setup
 ```
@@ -14,6 +21,3 @@ npm run serve
 ```
 npm run build
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
