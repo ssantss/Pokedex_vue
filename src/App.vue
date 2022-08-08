@@ -19,7 +19,7 @@
         </button>
       </div>
       <div class="conteinerSorprendeme">
-        <button class="buttom_sorprendeme" @click="random">Sorprendeme</button>
+        <button class="buttom_sorprendeme" @click="random">Sorpréndeme</button>
       </div>
       <div class="container_logos">
         <div class="logo_github">
