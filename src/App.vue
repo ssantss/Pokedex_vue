@@ -61,13 +61,17 @@ export default {
     };
   },
   methods: {
-    async searchPokemon() {
+    async searchPokemon(randomNumber) {
       try {
-        const pokemonToFind = await fetch(`${pokeapi}${this.pokemonID}`);
+        let pokemonID = randomNumber;
+        if (typeof pokemonID != "number") {
+          pokemonID = this.pokemonID;
+        }
+        const pokemonToFind = await fetch(`${pokeapi}${pokemonID}`);
         const pokemon = await pokemonToFind.json(); // La respuesta se convierte en un json
-        /* this.pokemons.push(pokemon); */
+
         this.addPokemon(pokemon);
-        /* console.log(this.pokemon); */
+
         return pokemon;
       } catch (error) {
         this.$swal({
@@ -77,20 +81,6 @@ export default {
           title: "POKEMON NO ENCONTRADO!",
           timer: 1000,
         });
-        console.log(error);
-      }
-    },
-    async searchPokemonRadom(randomNumber) {
-      try {
-        const pokemonID = randomNumber;
-        const pokemonToFind = await fetch(`${pokeapi}${pokemonID}`);
-        const pokemon = await pokemonToFind.json(); // La respuesta se convierte en un json
-        /* this.pokemons.push(pokemon); */
-        this.addPokemon(pokemon);
-        /* console.log(this.pokemon); */
-        return pokemon;
-      } catch (error) {
-        alert("Pokemon was not found");
         console.log(error);
       }
     },
@@ -112,7 +102,7 @@ export default {
       for (let index = 0; index < this.maxRandomPokemon; index++) {
         const randomNumber = this.getRandomNumber(0, this.maxNumPokemons);
         console.log("RANDOM = ", randomNumber);
-        this.searchPokemonRadom(randomNumber);
+        this.searchPokemon(randomNumber);
       }
     },
   },
