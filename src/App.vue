@@ -56,6 +56,8 @@ export default {
     return {
       pokemonID: "",
       pokemons: [],
+      maxNumPokemons: 904,
+      maxRandomPokemon: 14,
     };
   },
   methods: {
@@ -103,14 +105,12 @@ export default {
       const index = this.pokemons.findIndex((pokemon) => pokemon.id === id);
       this.pokemons.splice(index, 1);
     },
+    getRandomNumber(a, b) {
+      return Math.floor(Math.random() * (b - a + 1) + a);
+    },
     random() {
-      const maxrandom = 14;
-      for (let index = 0; index < maxrandom; index++) {
-        const minPokemon = 0;
-        const maxPokemon = 905;
-        const randomNumber = Math.floor(
-          Math.random() * (maxPokemon - minPokemon + 1) + minPokemon
-        );
+      for (let index = 0; index < this.maxRandomPokemon; index++) {
+        const randomNumber = this.getRandomNumber(0, this.maxNumPokemons);
         console.log("RANDOM = ", randomNumber);
         this.searchPokemonRadom(randomNumber);
       }
