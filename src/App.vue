@@ -101,7 +101,6 @@ export default {
     random() {
       for (let index = 0; index < this.maxRandomPokemon; index++) {
         const randomNumber = this.getRandomNumber(0, this.maxNumPokemons);
-        console.log("RANDOM = ", randomNumber);
         this.searchPokemon(randomNumber);
       }
     },
